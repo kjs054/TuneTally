@@ -1,0 +1,59 @@
+.discography-result {
+    position: relative;
+    width: 100%;
+}
+
+.image-container {
+    width: 100%;
+    box-shadow: rgb(6 6 6 / 25%) 0 0 15px;
+    padding-bottom: 100%;
+    border-radius: 0.4em;
+    position: relative;
+    overflow: hidden;
+}
+
+.discography-result-subtitle {
+    color: #2C2C2C;
+    font-size: 0.8em;
+    margin-top: 0.2em;
+}
+
+.discography-result-image {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.discography-result-title {
+    color: #2C2C2C;
+    font-size: 1em;
+    padding-top: 5px;
+}
+
+.discography-result-details {
+    margin-top: 0.2em;
+    color: gray;
+    font-size: 0.8em;
+}
+
+:host {
+    cursor: pointer;
+}
+
+:host-context(.light) .discography-result-title, :host-context(.light) .discography-result-subtitle, :host-context(.light) .discography-result-details {
+   color: white;
+}
+
+app-rating-indicator{
+    margin: 10px;
+}
+
+@media (max-width: 1026px) {
+    .rating-indicator-score  {
+        -webkit-text-stroke: thin;
+    }
+    
+}
+  

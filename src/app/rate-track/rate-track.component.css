@@ -1,0 +1,45 @@
+.active  /deep/ .mat-slider-track-fill {
+    background: #FF3F34 !important;
+}
+
+.slider-negative /deep/ .mat-slider-track-fill, .slider-negative /deep/ .mat-slider-thumb-label {
+    background: #FF3F34 !important;
+}
+  
+.slider-neutral /deep/ .mat-slider-track-fill,  .slider-neutral /deep/ .mat-slider-thumb-label {
+    background: #ffca00 !important;
+}
+  
+.slider-positive /deep/ .mat-slider-track-fill, .slider-positive /deep/ .mat-slider-thumb-label {
+    background: #0feb84 !important;
+}
+
+.mat-slider{
+    width: 100% !important;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 1em;
+    color: white;
+    font-family: SF-UI-Bold;
+    margin-top: 10px;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+
+@media (max-width: 1026px) {
+    :host {
+       width: 68vw;
+    }
+}

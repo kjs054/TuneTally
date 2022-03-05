@@ -1,0 +1,25 @@
+.artist-image {
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 16px;
+    background-color: #333;
+}
+
+.artist-image img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.artist-item {
+    padding: 20px 20px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

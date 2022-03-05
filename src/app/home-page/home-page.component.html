@@ -1,0 +1,41 @@
+<div id="home-page">
+    <div id="waves">
+        <a [routerLink]="['/artist', '4O15NlyKLIASxsJ0PrXPfz']" class="bubble shadow one"></a>
+        <a [routerLink]="['/artist', '757aE44tKEUQEqRuT6GnEB']" class="bubble shadow two"></a>
+        <a [routerLink]="['/artist', '1Xyo4u8uXC1ZmMpatF05PJ']" class="bubble shadow three"></a>
+        <a [routerLink]="['/artist', '6M2wZ9GZgrQXHCFfjv46we']" class="bubble shadow four"></a>
+        <a [routerLink]="['/artist', '4MCBfE4596Uoi2O4DtmEMz']" class="bubble shadow five"></a>
+        <a [routerLink]="['/artist', '6qqNVTkY8uBg9cP3Jd7DAH']" class="bubble shadow six"></a>
+        <a [routerLink]="['/artist', '246dkjvS1zLTtiykXe5h60']" class="bubble shadow seven"></a>
+        <a [routerLink]="['/artist', '66CXWjxzNUsdJxJ2JdwvnR']" class="bubble shadow eight"></a>
+    </div>
+    <div id="top-content-block">
+        <img id="logo" src="../../assets/photos/tunetally.png">
+    </div>
+    <div id="search-content-block">
+        <h4 id="home-subheader">Rank, rate and explore your<br>favorite artists, albums and songs.</h4>
+        <input *ngIf="!(this.toggleService.searchToggleState$ | async)" (click)="toggleService.changeSearchToggle(true)"
+            [style.border-radius]="'30px'" type="text" placeholder="Search an artist, album or song" id="search"
+            autocomplete="off" class="shadow" name="searchStr">
+    </div>
+    <div id="spotify-box" *ngIf="currentUser && !currentUser.spotify">
+        <button id="spotify-button" style="background-color: #1db954; color: white;"
+            (click)="spotifyService.connectSpotify()" mat-button class="button">
+            <img src="../../assets/icons/spotify.png"><span>Connect Spotify</span>
+        </button>
+        <p>Get results based on what you listen to.</p>
+    </div>
+    <section id="results">
+        <app-result-row *ngIf="usersRecentlyPlayed"
+            [data]="{color: '#00C9F7', releases: usersRecentlyPlayed, type: 'RECENTLY PLAYED'}"></app-result-row>
+        <app-result-row *ngIf="usersTopArtists"
+            [data]="{color: '#00C9F7', artists: usersTopArtists, type: 'YOUR TOP ARTISTS'}"></app-result-row>
+        <app-result-row *ngIf="usersTopTracks"
+            [data]="{color: '#00C9F7', releases: usersTopTracks, type: 'YOUR TOP PLAYED'}"></app-result-row>
+        <app-result-row [data]="{color: '#00C9F7', releases: latestReleases, type: 'LATEST RELEASES'}">
+        </app-result-row>
+        <app-result-row *ngIf="recentlyRated"
+            [data]="{color: '#00C9F7', releases: recentlyRated, type: 'RECENTLY RATED'}"></app-result-row>
+    </section>
+    <p style="padding-bottom: 2vh;">Found a bug? Report it <a href="https://forms.gle/17Xpjg77GKThi88R7" style="color: black; text-decoration: underline;">here</a></p>
+</div>

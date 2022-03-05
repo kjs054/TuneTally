@@ -1,0 +1,15 @@
+<div id="search-container" [style.border-radius]="showingSearchResults ? '30px 30px 0 0' : '30px'">
+    <mat-icon (click)="closeSearch()" id="back">arrow_back_ios</mat-icon>
+    <input #searchInput type="text" [(ngModel)]="searchStr" (keyup)="searchMusic()" placeholder="Search an artist, album or song" id="search" autocomplete="off" class="real-search" name="searchStr">
+</div>
+<div @slideUpDown *ngIf="showingSearchResults" class="shadow" id="search-results">
+    <ul *ngFor="let item of searchResults | keyvalue" [hidden]="item.value.length === 0">
+        <h2 class="results-title">{{item.key.toUpperCase()}}</h2>
+        <li @fade *ngFor="let result of item.value" class="result">
+            <a (click)="closeSearch()" routerLink="/{{getResultType(result)}}/{{result.id}}"></a>
+            <img [style.border-radius]="result.type === 'artist' ? '23px' : '0'" [src]="result.images[0].url">
+            <h3>{{result.name}}</h3>
+            <p>{{result.type.charAt(0).toUpperCase() + result.type.slice(1)}} | {{ result.type == 'artist' ? (result.genres | join: ', ') : "Released " + result.release_date }}</p>
+        </li>
+    </ul>
+</div>

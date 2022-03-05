@@ -1,0 +1,100 @@
+
+#content {
+    overflow-x: hidden;
+}
+
+#wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+#genres {
+    font-size: 1.3em;
+    padding-bottom: 3vh;
+}
+
+#results {
+    padding: 35px 35px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    overflow: scroll;
+}
+
+mat-paginator {
+    position: absolute;
+    top: 0.8em;
+    right: 0px;
+}
+
+
+mat-paginator /deep/ .mat-paginator-range-label {
+    display: none;
+}
+
+app-analytics-sidebar {
+    float: left;
+    width: 22%;
+}
+
+.add-fan-button {
+    float: right;
+    color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 40px;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: -20px;
+    border-radius: 0 23px 23px 0px;
+}
+
+.artist-action-buttons {
+    margin-bottom: 20px;
+}
+
+#artist-page {
+ 
+}
+
+app-artist-banner {
+    flex: 0 0 29%;
+    min-width: 385px;
+}
+
+app-search-music {
+    width: 85vw;
+    max-height: 95vh;
+    top: 20px;
+}
+
+@media (max-width: 1026px) {
+
+    #artist-page {
+        flex-direction: column;
+        overflow: scroll;
+    }
+
+    #wrapper {
+        flex-direction: column;
+        overflow: unset;
+        height: unset;
+    }
+
+    #genres {
+        padding-bottom: 0;
+        padding-top: 3vh;
+    }
+
+    #results {
+        padding: 0 25px 100px 25px;
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    app-artist-banner {
+        flex: 1;
+        min-width: unset;
+    }
+  }

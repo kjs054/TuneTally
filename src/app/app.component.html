@@ -1,0 +1,24 @@
+<app-alert></app-alert>
+<div id="right-action-menu">
+    <mat-menu #menu="matMenu">
+        <button *ngIf="router.url != '/'" [routerLink]="['/']" mat-menu-item>Home</button>
+        <button (click)="toggleService.changeSearchToggle(true)" mat-menu-item>Search</button>
+        <button *ngIf="!(afAuth.authState | async)" (click)="modalService.openLoginDialog()" mat-menu-item>Log In</button>
+        <button *ngIf="currentUser" (click)="signOut()" mat-menu-item>Sign Out</button>
+    </mat-menu>
+    <mat-icon *ngIf="mobile" mat-button [matMenuTriggerFor]="menu" class="search-button button" [ngStyle]="{'background-color': menuColor}" >menu</mat-icon>
+    <mat-icon *ngIf="!mobile && router.url != '/'" [routerLink]="['/']" [ngStyle]="{'background-color': menuColor}"
+        class="search-button button">home</mat-icon>
+    <mat-icon *ngIf="!mobile && router.url != '/'" (click)="toggleService.changeSearchToggle(true)" [ngStyle]="{'background-color':  menuColor}"
+        class="search-button button">search</mat-icon>
+    <button *ngIf="!mobile && !(afAuth.authState | async)" id="login-button" (click)="modalService.openLoginDialog()"
+        [ngStyle]="{'background-color':  menuColor}" class="button">Sign In</button>
+    <button *ngIf="!mobile && (router.url.includes('/profile/' + currentUser?.uid)) && currentUser" id="login-button" (click)="signOut()"
+        [ngStyle]="{'background-color':  menuColor}" class="button">Sign Out</button>
+    <a *ngIf="currentUser && !(router.url.includes('/profile/' + currentUser?.uid))"
+        [routerLink]="['/profile', currentUser?.uid]" [style.background-image]="'url('+ (currentUser?.image_url | default: '../assets/icons/user.png')  +')'"
+        class="user-profile-button button"></a>
+</div>
+<div @fade [hidden]="!(toggleService.searchToggleState$ | async)" (click)="toggleService.changeSearchToggle(false)" class="dark-overlay"></div>
+<app-search-music @fade *ngIf="toggleService.searchToggleState$ | async"></app-search-music>
+<router-outlet></router-outlet>

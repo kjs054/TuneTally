@@ -1,0 +1,10 @@
+<a [routerLink]="['/artist', artist.id]" class="artist-item">
+    <div style="position: relative">
+        <app-rating-indicator *ngIf="artist.average" [rating]="artist.average"></app-rating-indicator>
+        <div class="artist-image shadow">
+            <img [src]="artist.images[1].url">
+        </div>
+    </div>
+    <h3 style="color: white">{{artist.name}}</h3>
+    <p *ngIf="artist.ratings_count" style="color: white">{{artist.ratings_count}} Ratings</p>
+</a>

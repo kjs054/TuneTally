@@ -1,0 +1,20 @@
+<div style="text-align: center" mat-dialog-content>
+    <img id="logo" src="../../assets/photos/tunetally.png">
+    <p *ngIf="!showConnectSpotify">No need for another password.<br>Continue with one of the following.</p>
+    <button type="submit" *ngIf="!showConnectSpotify" style="background-color: white; color: black;" (click)="logInWithGoogle()" mat-button
+        class="button shadow form-action">
+        <img src="../../assets/icons/g-logo.png"><span>Sign In With Google</span></button>
+    <button type="submit" *ngIf="!showConnectSpotify" style="background-color: rgb(27,118,242); color: white;" (click)="logInWithFacebook()" mat-button
+        class="button shadow form-action">
+        <img src="../../assets/icons/facebook.png"><span>Sign In With Facebook</span>
+    </button>
+    <div id="spotifyContainer" *ngIf="showConnectSpotify">
+        <p>Link your Spotify to help tailor results <br> based on what you listen to.<br> </p>
+        <button style="background-color: #1db954; color: white;" (click)="spotifyService.connectSpotify()" mat-button
+            class="button shadow form-action">
+            <img src="../../assets/icons/spotify.png"><span>Connect Spotify</span>
+        </button>
+        <a (click)="dialogRef.close()">Skip</a>
+    </div>
+    <p style="color: #FF3F34;">{{serverMessage}}</p>
+</div>

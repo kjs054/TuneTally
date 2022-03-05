@@ -1,0 +1,39 @@
+<div *ngIf="afAuth.authState | async as currentUser" id="profile-page">
+    <app-artist-banner
+        [data]="{name: user?.display_name, image: (user?.image_url | default: '../assets/icons/user.png'), colors: {vibrant: mainColor, darkVibrant: mainColor}}">
+    </app-artist-banner>
+    <div id="content">
+        <div id="bottom-content">
+            <div id="tabbed-container">
+                <div id="tab-control">
+                    <button (click)="changeTab('chart')" [style]="currentTab === 'chart' ? 'background-color:' + mainColor + '; color: white' : ''" class="button tab-item shadow">Chart</button>
+                    <button (click)="changeTab('artists')"  [style]="currentTab === 'artists' ? 'background-color:' + mainColor + '; color: white' : ''" class="button tab-item shadow">Artists</button>
+                    <button (click)="changeTab('comments')" [style]="currentTab === 'comments' ? 'background-color:' + mainColor + '; color: white' : ''" class="button tab-item shadow">Comments</button>
+                </div>
+                <div style="width: 100%; height: 80vh; justify-content: center; display: flex; flex-direction: column; align-items: center;"  *ngIf="totalChart.length === 0 && !isLoading">
+                    <img width="60%" src="../../../assets/icons/albums.png">
+                    <h4 style="font-size: 1.5em; color: #404040; text-align: center; margin-top: 1em;">Rate some tunes to populate your chart.</h4>
+                </div>
+                <app-chart *ngIf="totalChart.length !== 0" [hidden]="currentTab !== 'chart'" style="flex: 1;" [ratings]="totalChart"></app-chart>
+                <div *ngIf="currentTab === 'artists' && totalChart.length !== 0" class="tab-content">
+                    <mat-paginator [length]="artistsIds.length"
+                                   [pageSize]="15"
+                                   (page)="changeArtistPage($event.pageIndex)">
+                    </mat-paginator>
+                    <ngx-skeleton-loader class="rated-artists" *ngIf="!ratedArtists" count="15" [theme]="{width: '100%', 'padding-bottom': '150%'}"></ngx-skeleton-loader>
+                    <div class="rated-artists" *ngIf="ratedArtists">
+                        <app-artist-result [artist]="artist" *ngFor="let artist of ratedArtists"></app-artist-result>
+                    </div>
+                </div>
+                <div *ngIf="currentTab === 'comments'" class="tab-content">
+                    <!-- <mat-paginator [length]="artistsIds.length"
+                                   [pageSize]="15"
+                                   (page)="changeArtistPage($event.pageIndex)">
+                    </mat-paginator> -->
+                    <app-comments class="white" [comments]="userComments"></app-comments>
+                </div>
+            </div>
+            <app-analytics-sidebar [mainColor]="mainColor" [ratings]="totalChart"></app-analytics-sidebar>
+        </div>
+    </div>
+</div>

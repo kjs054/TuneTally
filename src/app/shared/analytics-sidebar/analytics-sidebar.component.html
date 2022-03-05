@@ -1,0 +1,25 @@
+<div id="analytics-sidebar">
+    <div *ngIf="ratings" class="analytic-item">
+        <h1 [style.color]="mainColor" class="analytic-value">{{ratings.length}}</h1>
+        <h1 class="analytic-title">RATINGS</h1>
+    </div>
+    <div *ngIf="totalReleases" class="analytic-item">
+        <h1 [style.color]="mainColor" class="analytic-value">{{totalReleases}}</h1>
+        <h1 class="analytic-title">RELEASES</h1>
+    </div>
+    <div *ngIf="ratings" class="analytic-item">
+        <h1 [ngClass]="'text-' + (ratingsAverage | rating)" class="analytic-value">{{ratingsAverage}}</h1>
+        <h1 class="analytic-title">AVERAGE</h1>
+    </div>
+    <div class="line"></div>
+    <div *ngIf="this.router.url.includes('/profile')" class="analytic-item">
+        <h1 class="chart-title">DECADE DISTRIBUTION</h1>
+        <p-chart responsive="true" #decadeChart type="horizontalBar" width="16em" height="15em"
+            [options]="chartOptions" [data]="decadeData"></p-chart>
+    </div>
+    <div *ngIf="ratings" class="analytic-item">
+        <h1 class="chart-title">RATING DISTRIBUTION</h1>
+        <p-chart responsive="true" #ratingsChart type="horizontalBar" width="16em" height="15em"
+            [options]="chartOptions" [data]="ratingsData"></p-chart>
+    </div>
+</div>

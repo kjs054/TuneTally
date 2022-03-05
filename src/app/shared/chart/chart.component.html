@@ -1,0 +1,35 @@
+<div id="chart">
+    <mat-paginator [length]="ratings.length"
+                   [pageSize]="10"
+                   (page)="paginateChart($event.pageIndex)">
+    </mat-paginator>
+    <div *ngIf="ratings.length >= 3" id="podium">
+        <div class="podium-item">
+            <img [src]="releases[1].images[0].url | default: ''">
+            <div class="stand" style="background-color: rgb(194, 185, 185); width: 100%; height: 80px;">2nd</div>
+        </div>
+        <div class="podium-item">
+            <img [src]="releases[0].images[0].url | default: ''">
+            <div class="stand" style="background-color: gold; width: 100%; height: 120px;">1st</div>
+        </div>
+        <div class="podium-item">
+            <img [src]="releases[2].images[0].url | default: ''">
+            <div class="stand" style="background-color: #f3aa43; width: 100%; height: 50px;">3rd</div>
+        </div>
+    </div>
+    <ol id="rank-chart">
+        <ngx-skeleton-loader *ngIf="isLoading" [count]="currentChart.length"  [theme]="{height: '50px'}"></ngx-skeleton-loader>
+        <li class="rank-item" *ngFor="let item of currentChart">
+            <a [routerLink]="['/release', findRelease(item.release.id).id]"></a>
+            <div class="release-info">
+                <h3 class="release-rank">{{item.rank}}.</h3>
+                <img class="release-img" [src]="findRelease(item.release.id).images[1].url">
+                <div class="release-text">
+                    <h3 class="release-name">{{findRelease(item.release.id).name}}</h3>
+                    <p class="release-details">{{getArtistsNames(findRelease(item.release.id)) | join: ', '}}</p>
+                </div>
+            </div>
+            <app-rating-indicator [rating]="findRelease(item.release.id).rating"></app-rating-indicator>
+        </li>
+    </ol>
+</div>

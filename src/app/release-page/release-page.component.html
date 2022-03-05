@@ -1,0 +1,78 @@
+<div id="content">
+    <img [routerLink]="['/']" id="logo" src="../../assets/photos/tunetallywhite.png">
+    <aside style="left: 0" [style.visibility]="appMsgService.retrieveReleases().length != 0 ? 'visible' : 'hidden'">
+        <mat-icon (mouseover)="showPrevReleasePreview=true" (mouseout)="showPrevReleasePreview=false" style="float: left; transform: rotate(180deg);" (click)="navigateReleases('prev')" svgIcon="left_arrow" class="navigation-arrow">keyboard_arrow_left</mat-icon>
+        <img @fade *ngIf="showPrevReleasePreview" class="release-preview" style="left: 1.5vw;" [src]="getAdjacentReleaseImage('prev')">
+    </aside>
+    <div *ngIf="release" class="release-page-content">
+        <div class="content-left-container">
+            <div class="release-page-cover">
+              <img class="release-page-cover-image" [src]="release?.images[0].url">
+            </div>
+            <div class="release-page-discography">
+                <iframe [src]="embedUrl | safe" width="100%" height="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
+        <div class="content-right-container">
+            <div class="release-page-header">
+                <h1 class="release-page-title">{{release?.name}}</h1>
+                <div id="sub-header">
+                    <div id="artists">
+                        <a class="action artist" *ngFor="let artist of release?.artists" [routerLink]="['/artist', artist.id]">{{artist.name}}</a> 
+                    </div>
+                    <h3 class="release-page-subtitle">Released {{release?.release_date | date: release?.release_date_precision}}<span class="detais-divider"> | </span><br class="mobile-break">{{release?.ratings_count | default: 0}} Ratings</h3>
+                </div>
+                <div class="release-page-rating-container">
+                    <mat-slider [style.visibility]="sliderActive ? 'hidden' : 'visible'" style="pointer-events: none;" class="{{'slider-' + (slider.value | rating)}}" #slider thumbLabel id="slider" [value]="release?.rating" step="0.5" min="0" max="10" tickInterval="3"></mat-slider>
+                    <mat-slider [(ngModel)]="ratingSliderValue" #userRatingSlider (input)="onSliderChange($event)" thumbLabel id="user-slider" [ngClass]="{'active': sliderActive, 'inactive': !sliderActive}" class="{{sliderActive ? 'slider-' + (userRatingSlider.value | rating) : ''}}" step="0.5" min="0" max="10" tickInterval="3"></mat-slider>
+                    <button #addRatingButton *ngIf="!userRating || ratingSliderChanged" (click)="addRatingClicked()" id="add-rating" class="action button">{{userRating ? 'Change Rating' : 'Add Rating'}}</button>
+                    <button *ngIf="userRating && !ratingSliderChanged" (click)="deleteRatingClicked()" id="add-rating" class="action button">Remove Rating</button>
+                </div>
+            </div>
+            <div id="content-bottom">
+                <div id="content-bottom-left" class="section-container">
+                    <div *ngIf="release?.tracks.length !== 1" class="section-container">
+                        <h1 class="section-header">Rate Tracks</h1>
+                        <ol id="track-list">
+                            <li (click)="addRatingClicked(track)" *ngFor="let track of release?.tracks; index as i" class="track">
+                                <div>
+                                    <h3>{{i+1 + '. ' + track.name}}</h3>
+                                    <p style="color: #ffffff80; font-size: 1.75.vh;">{{track.ratings_count}} Ratings</p>
+                                </div>
+                                <app-rating-indicator [rating]="track.rating"></app-rating-indicator>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="section-container">
+                        <div id="comments-header">
+                            <h1 class="section-header">COMMENTS</h1>
+                            <button id="add-comment" class="action button" (click)="toggleShowAddComment()">{{showAddCommentBlock ? "Hide" : userComment ? "Edit Comment" : "Add Comment"}}</button>
+                        </div>
+                        <div @slideUpDown *ngIf="showAddCommentBlock" id="add-comment-block" class="comment-block">
+                            <textarea (ngModelChange)="valueChange($event)" maxlength="280" placeholder="Tell the community what you think" [(ngModel)]="content" name="message" id="message-input" rows="10" cols="30"></textarea>
+                                <button id="post-button" (click)="postCommentHandler()" class="button">Post</button>
+                        </div>
+                        <app-comments [comments]="comments" [total]="release?.ratings_count" [releaseId]="release?.id"></app-comments>
+                    </div>
+                </div>
+                <div id="content-bottom-right">
+                    <app-analytics-view [ranks]="{userRank: userRank, genreRank: 9, worldRank: 122}"></app-analytics-view>
+                    <div *ngIf="ratings.length > 0" class="section-container">
+                        <h1 class="section-header">LATEST RATINGS</h1>
+                        <app-comments [comments]="ratings" [total]="release?.ratings_count" [releaseId]="release?.id"></app-comments>
+                    </div>
+                    <div class="section-container">
+                        <h1 class="section-header">FANS ALSO LIKE</h1>
+                        <div id="releases-results">
+                            <app-discography-result *ngFor="let release of recommendedReleases" [release]="release" class="light"></app-discography-result>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+    </div>
+    <aside style="right: 0" [style.visibility]="appMsgService.retrieveReleases().length != 0 ? 'visible' : 'hidden'">
+        <mat-icon (mouseover)="showNextReleasePreview=true" (mouseout)="showNextReleasePreview=false" style="float: right;" svgIcon="left_arrow" (click)="navigateReleases('next')" class="navigation-arrow">keyboard_arrow_right</mat-icon>
+        <img @fade *ngIf="showNextReleasePreview" class="release-preview" style="right: 1.5vw;" [src]="getAdjacentReleaseImage('next')">
+    </aside>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="comments" ng-app="comments" ng-controller="commentsCtrl">
+  <ul>
+    <li class="comment-block" *ngFor="let comment of comments">
+      <a *ngIf="comment.user" id="link" [routerLink]=" ['/profile', comment.user.uid]"></a>
+      <a *ngIf="comment.release" id="link" [routerLink]=" ['/release', comment.release.id]"></a>
+      <img *ngIf="comment.user"  class="comment-image" [src]="comment.user.image_url | default: '../../assets/icons/user.png'">
+      <img *ngIf="comment.release" style="border-radius: 5px;"  class="comment-image" [src]="comment.release.images[2].url">
+      <div class="comment-details">
+        <h3 class="comment-author">{{comment.user ? comment.user.display_name : comment.release.name  | default: ''}}</h3>
+        <p class="comment-content">{{comment.comment | default: (comment.posted.toDate() | date)}}</p>
+      </div>
+      <app-rating-indicator [rating]="comment.rating"></app-rating-indicator>
+      <img (click)="handleDeletion()" *ngIf="(authService.user$ | async)?.uid === comment.uid && comment.comment"
+        style="margin-left: auto; flex-shrink: 0;" width="20px" height="20px" src="../../assets/icons/clear.png">
+    </li>
+  </ul>
+  <mat-paginator *ngIf="comments?.length"
+    [length]="total"
+    [hidePageSize]="true"
+    [pageSize]="5">
+  </mat-paginator>
+  <div *ngIf="!(comments?.length > 0)" id="no-comments-container">
+    <h3>Nothing is here yet.<br>Be the first to comment.</h3>
+  </div>
+</div>

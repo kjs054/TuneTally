@@ -1,0 +1,12 @@
+<ngx-skeleton-loader *ngIf="!release" [theme]="{width: '100%', height: '50px'}"></ngx-skeleton-loader>
+<a [routerLink]="['/release', release?.id]" [state]="{rating: release?.rating, count: release?.ratings_count }">
+    <div class="discography-result">
+        <div class="image-container">
+            <app-rating-indicator [rating]="release.rating"></app-rating-indicator>
+            <img class="discography-result-image" [src]="release?.images[1].url">
+        </div>
+        <h3 class="discography-result-title">{{release?.name}}</h3>
+        <h3 class="discography-result-subtitle">{{release?.artists[0].name}}</h3>
+        <p class="discography-result-details">{{release?.ratings_count | default: 0}} Ratings</p>
+    </div>
+</a>

@@ -1,0 +1,61 @@
+#analytics-sidebar {
+    padding-top: 75px;
+}
+
+.chart-title {
+    font-size: 2em;
+    line-height: 1em;
+    height: 1em;
+    color: #404040;
+}
+
+#analytics-sidebar > * {
+    margin-bottom: 20px;
+}
+
+.analytic-item {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.analytic-value {
+    font-size: 7vw;
+    line-height: 5vw;
+    height: 6vw;
+}
+
+.analytic-title {
+    font-size: 4.5vw;
+    line-height: 3.5vw;
+    height: 4.5vw;
+    color: #404040;
+    margin-top: 7px;
+}
+
+@media (max-width: 1026px) {
+    
+    #analytics-sidebar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-left: 0;
+        padding-top: 15px;
+    }
+
+    .analytic-value {
+        font-size: 22vw;
+        line-height: 14vw;
+        height: 19vw;
+    }
+
+    .analytic-title {
+        font-size: 13.5vw;
+        line-height: 7.5vw;
+        height: 10.5vw;
+    }
+
+    p-chart div {
+        width: 100vw;
+    }
+  }
+  

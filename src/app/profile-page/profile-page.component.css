@@ -1,0 +1,99 @@
+#profile-page {
+    display: flex;
+    height: 100vh;
+}
+
+app-artist-banner {
+    flex: 0 0 29%;
+}
+
+.tab-content {
+    position: relative;
+}
+
+#tab-control {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab-item {
+    font-family: SF-UI-Bold;
+    font-size: 16px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background-color: white;
+    flex-basis: 32%;
+}
+
+.selected{
+    color: white;
+}
+
+#tabbed-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3vw;
+    flex: 1;
+}
+
+#content {
+    padding: 21px 35px;
+    overflow: scroll;
+    width: 100%;
+}
+
+#bottom-content {
+    display: flex;
+}
+
+.add-fan-button {
+    float: right;
+    color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 40px;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: -20px;
+    border-radius: 0 23px 23px 0px;
+    background-color: rgb(5,204,251);
+}
+
+.rated-artists {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill,minmax(138px,1fr));
+}
+
+#right-side-content {
+    padding: 25px;
+    overflow: scroll;
+}
+
+.line {
+    height: 5px;
+    border-radius: 2.5px;
+    background-color: rgb(230, 230, 230);
+}
+
+@media (max-width: 1026px) {
+
+    #bottom-content {
+        flex-direction: column;
+    }
+    
+    #content {
+        flex-direction: column;
+        padding: 20px;
+        overflow: unset;
+        width: unset;
+    }
+
+    #profile-page {
+        flex-direction: column;
+    }
+}
+  

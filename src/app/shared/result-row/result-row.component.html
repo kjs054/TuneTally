@@ -1,0 +1,16 @@
+
+<div class="result-row">
+    <div class="padded-container">
+        <div style="display: flex; justify-content: space-between;">
+            <ngx-skeleton-loader *ngIf="data?.releases?.length === 0 || data?.artists?.length === 0" [theme]="{width: '18em', 'height': '3em'}"></ngx-skeleton-loader>
+            <h2 *ngIf="data?.releases?.length > 0 || data?.artists?.length > 0" [ngStyle]="{'color': data?.color }" class="result-row-header">{{data?.type}}</h2>
+        </div>
+        <ngx-skeleton-loader class="result-row-table" *ngIf="data?.releases?.length === 0 || data?.artists?.length === 0" count="6" [theme]="{width: '100%', 'padding-bottom': '100%'}"></ngx-skeleton-loader>
+        <div *ngIf="data?.releases" class="result-row-table">
+            <app-discography-result *ngFor="let release of data?.releases" [release]="release"></app-discography-result>
+        </div>
+        <div *ngIf="data?.artists" class="result-row-table">
+            <app-artist-result *ngFor="let artist of data?.artists" [artist]="artist"></app-artist-result>
+        </div>
+    </div>
+</div>

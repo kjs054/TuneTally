@@ -1,0 +1,19 @@
+#alert-banner {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    text-align: center;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+.positive {
+    background-color: #0feb84c2
+}
+
+.negative {
+    background-color: #FF3F34c2
+}

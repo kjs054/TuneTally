@@ -1,0 +1,22 @@
+{
+  "targets": {
+    "music-reviewer": {
+      "hosting": {
+        "music-reviewer": [
+          "music-reviewer"
+        ]
+      }
+    },
+    "tunetallyapp": {
+      "hosting": {
+        "music-reviewer": [
+          "tunetallyapp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "music-reviewer",
+    "prod": "tunetallyapp"
+  }
+}

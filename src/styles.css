@@ -1,0 +1,358 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; 
+
+@font-face {
+  font-family: Vanguard-Bold-Italic;
+  src: url(assets/fonts/VanguardCF-BoldOblique.otf) format("opentype");
+}
+
+@font-face {
+  font-family: Avenir-Heavy;
+  src: url(assets/fonts/Avenir-Heavy.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: Vanguard-Regular-Italic;
+  src: url(assets/fonts/VanguardCF-RegularOblique.otf) format("opentype");
+}
+
+@font-face {
+  font-family: SF-UI-Regular;
+  src: url(assets/fonts/SFUIText-Regular.ttf) format("truetype");
+}
+
+@font-face{
+  font-family: SF-UI-Bold;
+  src: url(assets/fonts/SFUIText-Bold.ttf) format("truetype");
+}
+
+@font-face{
+  font-family: Vanguard-Demi-Bold;
+    src: url(assets/fonts/VanguardCF-DemiBold.eot) format('embedded-opentype'),
+         url(assets/fonts/VanguardCF-DemiBold.woff) format('woff'),
+         url(assets/fonts/VanguardCF-DemiBold.otf) format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+a, u {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, p {
+  font-weight: normal;
+  user-select: none;
+  margin: 0px;
+}
+
+h1 {
+  font-family: Vanguard-Bold-Italic;
+  font-weight: normal;
+}
+
+h2 {
+  font-family: Vanguard-Regular-Italic;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: SF-UI-Regular;
+  font-weight: 900;
+  margin: 0;
+}
+
+h4 {
+  font-family: Avenir-Heavy;
+  margin: 0;
+}
+
+p {
+  font-family: SF-UI-Regular;
+  margin: 0;
+}
+
+#search {
+  width: 100%;
+  background-image:url(assets/icons/search.svg); 
+  background-repeat: no-repeat !important;
+  background-size: 3vh !important;
+  background-position: 3vh !important;
+  padding: 2vh 0vh 2vh 8vh;
+  font-size: 1.3em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+#logo {
+  height: 3.2em;
+  cursor: pointer;
+  outline: none;
+}
+
+.positive {
+  background-color:#0feb84;
+}
+
+.neutral {
+  background-color: #ffca00;
+}
+
+.negative {
+  background-color: #FF3F34;
+}
+
+.undefined {
+  background-color: #b2bec3d4;
+}
+
+.text-positive {
+  color:#0feb84;
+}
+
+.text-neutral {
+  color: #ffca00;
+}
+
+.text-negative {
+  color: #FF3F34;
+}
+
+.text-undefined {
+  color: #b2bec3d4;
+}
+
+.previous-icon {
+  font-size: 45px;
+  color: white;
+}
+
+a {
+  cursor: pointer;
+}
+
+app-artist-result {
+  border-radius: 0.5em;
+}
+
+.menu-button {
+  display: inline-block;
+  line-height: 40px;
+  font-family: SF-UI-Bold;
+  font-size: 17px;
+  border-radius: 20px;
+  padding: 0px 20px 0px 20px;
+  background-color: white;
+  margin-right: 20px;
+  text-align  : center;
+  width       : auto;
+}
+
+mat-paginator {
+  background-color: transparent !important;
+}
+
+.shadow {
+  -webkit-box-shadow: rgb(121 121 121 / 30%) 0 0 15px;
+  -moz-box-shadow: rgb(121 121 121 / 30%) 0 0 15px;
+  box-shadow: rgb(121 121 121 / 30%) 0 0 15px
+}
+
+.button {
+  outline: none;
+  border-style: none;
+  cursor: pointer;
+}
+
+input {
+  color: #404040;
+  width: 100%;
+  padding: 19px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 2.5vh;
+  border:none;
+  outline: none;
+  font-family: "SF-UI-Regular";
+  border-radius: 30px;
+}
+
+.pattern-background {
+  background-image: url("./assets/photos/typography.svg");
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.dark-overlay {
+  width: 100vw;
+  position: absolute;
+  z-index: 4;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#right-action-menu {
+  display: flex;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 3;
+  transition: top 0.3s;
+}
+
+#right-action-menu > mat-icon:not(:last-child){
+  margin-right:16px;
+}
+
+.user-profile-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 23px;
+  background-image: url('assets/icons/user.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.search-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 23px;
+  color: white;
+  padding: 11px;
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+  top: 18px;
+}
+.mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
+  height: 26px;
+  border-radius: 13px;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.mat-slider.mat-slider-horizontal .mat-slider-track-background,
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  height: 100%;
+  transition: background-color 500ms;
+}
+
+.mat-slider-horizontal .mat-slider-ticks {
+  height: 0px !important;
+}
+
+.mat-accent .mat-slider-thumb {
+  height: 50px;
+  width: 50px;
+  bottom: -37px;
+  right: -37px;
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  box-shadow: rgba(0,0,0,0.25) 0 0 6px;
+}
+
+
+.mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  box-shadow: rgba(0,0,0,0.25) 0 0 6px;
+  border: none;
+}
+
+.mat-slider-thumb-label {
+  transform: rotate(45deg) !important;
+  width: 45px !important;
+  height: 45px !important;
+}
+
+.mat-slider-thumb {
+  transform: scale(0) !important;
+}
+
+.mat-slider-thumb-label-text {
+  opacity: 1 !important;
+}
+
+.mat-slider-thumb-label-text {
+  font-family: SF-UI-Regular;
+  font-weight: bold;
+  font-size: 24px !important;
+  color: white !important;
+}
+
+.mat-slider-horizontal .mat-slider-thumb-label {
+  top: -10px !important;
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  box-shadow: rgba(0,0,0,0.25) 0 0 6px;
+}
+
+.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label {
+  border-radius: 50% !important;
+}
+
+.mat-dialog-container {
+  border-radius: 20px !important;
+}
+
+.action-buttons {
+  display: flex;
+}
+
+.action-buttons > * {
+  margin-right: 1vw;
+}
+
+.mat-dialog-content {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100% !important;
+}
+
+.mat-dialog-content > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.ui-datatable * {
+  border : 0px !important;
+}
+
+div:focus {
+  outline: 0;
+}
+
+@media (max-width: 1026px) {
+  .mat-dialog-content {
+    width: 252px;
+  }
+
+  #search {
+    font-size: 1em;
+  }
+
+  #logo {
+    height: 2.6em;
+  }
+
+  .real-search {
+    border-radius: 0 !important;
+  }
+
+  .mat-slider-thumb-label-text {
+    -webkit-text-stroke: thin;
+  }
+
+}
+

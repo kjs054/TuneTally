@@ -1,0 +1,139 @@
+#podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#podium img {
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+#podium .stand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chart {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+
+#page-numbers {
+    display: flex;
+}
+
+#podium > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 25%;
+    flex-direction: column;
+}
+
+#rank-chart {
+    padding: 0;
+}
+
+.menu-button {
+    color: #111111;
+    font-size: 1em;
+    width: 6em;
+    margin-right: 0;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    flex: 0 0 50%;
+    cursor: pointer;
+    position: relative;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.release-img {
+    flex: 0 0 3em;
+    width: 3em;
+    overflow: hidden;
+}
+
+.release-info {
+    display: flex;
+    align-items: center;
+}
+
+.release-name {
+    font-size: 1.25em;
+}
+
+.release-details {
+    font-size: 1.1em;
+    color: gray;
+}
+
+.rank-item app-rating-indicator {
+    position: relative;
+    float: right;
+}
+
+.release-text {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.release-info > * {
+    margin-left: 10px;
+}
+
+.release-rank {
+    font-size: 1.5em;
+}
+
+.rank-item a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.stand {
+    font-family: SF-UI-Bold;
+    color: white;
+    font-size: 30px;
+}
+
+#pagination {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.menu-button:hover {
+    background-color: #00D4FF;
+    color: white;
+}
+
+@media (max-width: 1026px) {
+
+    .release-name {
+        font-size: 1em;
+    }
+
+    .release-details {
+        font-size: 1em;
+    }
+
+    #page-numbers {
+        display: none;
+    }
+
+    #podium > * {
+        flex: 0 0 33%;
+    }
+
+  }
+  

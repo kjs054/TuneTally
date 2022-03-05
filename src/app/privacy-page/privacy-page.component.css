@@ -1,0 +1,15 @@
+h2 {
+    margin-bottom: 2vh;
+    color: #05ccfb;
+    font-size: 2.5em;
+}
+
+p, li {
+    font-family: SF-UI-Regular;
+    margin: 0;
+    font-size: 1em;
+}
+
+#content {
+    padding: 16vh 6vw;
+}
